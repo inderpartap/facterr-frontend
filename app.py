@@ -7,14 +7,6 @@ import requests
 
 app = Flask(__name__)
 
-# defining the app settings for caching
-app.config['CACHE_TYPE'] = 'simple'
-app.cache = Cache(app)
-
-# for debugging purposes
-app.logger.addHandler(logging.StreamHandler(sys.stdout))
-app.logger.setLevel(logging.ERROR)
-
 mongo = MongoClient("mongodb+srv://admin:admin@facterrcluster-v12sw.mongodb.net/test?retryWrites=true&w=majority")
 db = mongo['news']
 collection = db['newsData']
@@ -49,7 +41,6 @@ schedule.add_interval_job(fetch_real_news, minutes=1)
 
 @app.route("/")
 @app.route("/dashboard")
-@app.cache.cached(timeout=300)
 def index():
 	# online_users = mongo.db.users.find({"online": True})
 	return render_template("index.html", message="Dashboard");   
@@ -64,10 +55,8 @@ def search():
 	return render_template("search.html", message="Custom Search");   
 
 @app.errorhandler(404)
-@app.cache.cached(timeout=300)
 def page_not_found(error):
     return render_template('404.html', title='Page not found'), 404
-
 
 
 if __name__ == "__main__":
