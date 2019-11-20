@@ -37,7 +37,7 @@ def fetch_real_news():
 	# collection.update(query, data_dict, upsert=True);
 	# collection.insert_one(data_dict) 
 
-schedule.add_interval_job(fetch_real_news, minutes=1)
+schedule.add_interval_job(fetch_real_news, minutes=30)
 
 @app.route("/")
 @app.route("/dashboard")
