@@ -15,7 +15,8 @@ run-background: clean
 
 run: clean
 	# to be used when testing locally
-	gunicorn --pythonpath app:app
+# 	gunicorn --pythonpath app:app
+	python app.py
 
 test-api: clean run-background
 	nosetests
