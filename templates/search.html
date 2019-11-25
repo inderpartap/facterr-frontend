@@ -1,20 +1,5 @@
 <!doctype html>
-<!--
-  Material Design Lite
-  Copyright 2015 Google Inc. All rights reserved.
 
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      https://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License
--->
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -62,24 +47,7 @@
       <header class="demo-header mdl-layout__header mdl-color--grey-100 mdl-color-text--grey-600">
         <div class="mdl-layout__header-row">
           <span class="mdl-layout-title">Custom Search</span>
-          <div class="mdl-layout-spacer"></div>
-          <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
-            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
-              <i class="material-icons">search</i>
-            </label>
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="search">
-              <label class="mdl-textfield__label" for="search">Enter your query...</label>
-            </div>
-          </div>
-          <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
-            <i class="material-icons">more_vert</i>
-          </button>
-          <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
-            <li class="mdl-menu__item">About</li>
-            <li class="mdl-menu__item">Contact</li>
-            <li class="mdl-menu__item">Legal information</li>
-          </ul> -->
+          <div class="mdl-layout-spacer"></div>   
         </div>
       </header>
       <div class="demo-drawer mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
@@ -94,72 +62,96 @@
           <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons" role="presentation">help_outline</i><span class="visuallyhidden">Help</span></a>
         </nav>
       </div>
+
       <main class="mdl-layout__content mdl-color--grey-100">
         <div class="mdl-grid demo-content">
-
+          
           <div class="demo-cards mdl-cell mdl-cell--8-col mdl-cell--8-col-tablet mdl-grid mdl-grid--no-spacing">
             <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
+              
               <div class="mdl-card__title mdl-card--expand mdl-color--teal-300">
-                <h2 class="mdl-card__title-text">Enter the news data that you want to classify</h2>
+                  <h2 class="mdl-card__title-text">Enter the news data that you want to classify</h2>
               </div>
+              <form action="#">
               <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-                <!-- Title -->
-                  <form action="#">
-                    <div class="mdl-textfield mdl-js-textfield" style="width: 600px">
-                      <input class="mdl-textfield__input" type="text" id="sample1">
-                      <label class="mdl-textfield__label" for="sample1">News Title</label>
-                    </div>
-                  </form>
-                <!-- Body -->
-                  <form action="#">
-                    <div class="mdl-textfield mdl-js-textfield" style="width: 600px">
-                      <textarea class="mdl-textfield__input" type="text" rows= "3" id="sample5" ></textarea>
-                      <label class="mdl-textfield__label" for="sample5">News Body...</label>
-                    </div>
-                  </form>
-                </div>
-                <div class="mdl-card__actions mdl-card--border mdl-grid ">
-                        
-                      <div class="mdl-cell mdl-cell--1-col">
-                      </div>
-                        <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone">
-                         <a class="btn btn-lg btn-border" id="Submit" type="submit" style="color: #fff">
-                            <i class="material-icons right">send</i>Classify
-                        </a>
-                      </div>
-                      <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
-                      </div>
-                       <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone">
-                        <a class="btn btn-lg btn-border" id="clear" type="clear" style="color: #fff">
-                            <i class="material-icons right">clear</i>Clear
-                        </a>
-                      </div>
+                  <!-- Title -->
+                  <div class="mdl-textfield mdl-js-textfield" style="width: 600px">
+                    <textarea class="mdl-textfield__input" type="text" rows= "1" id="title" ></textarea>
+                    <label class="mdl-textfield__label" for="title">News Title</label>
+                  </div>     
+                   <!-- Body -->             
+                  <div class="mdl-textfield mdl-js-textfield" style="width: 600px">
+                    <textarea class="mdl-textfield__input" rows= "5" type="text" id="body" ></textarea>
+                    <label class="mdl-textfield__label" for="body">News Body...</label>
+                  </div>                  
               </div>
-            </div>
-            <div class="demo-separator mdl-cell--1-col"></div>
-          </div>
 
+              <div class="mdl-card__actions mdl-card--border mdl-grid ">         
+                  <div class="mdl-cell mdl-cell--1-col">
+                  </div>
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone">
+                     <a class="btn btn-lg btn-border" id="Submit" type="submit" style="color: #fff">
+                        <i class="material-icons right">send</i>Classify
+                    </a>
+                  </div>
+                  <div class="mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">
+                  </div>
+                   <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone">
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent material-icons col s12 m6 l6" type='Reset' id="clear" value='Reset'>
+                      <i class="material-icons right" style="padding-top: 6px">clear</i>Clear
+                    </button>
+                  </div>
+              </div>
+              </form>
+            </div>
+          </div>
           <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-grid mdl-grid--no-spacing">
-            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="mdl-card__title mdl-card--expand" style="background-color: #F44336">
-                <h2 class="card-title" style="margin: auto;">Fake news</h2>
-              </div>
-            </div>
+            <div class="row" id="addcard">
           </div>
-
-          <div class="demo-cards mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-grid mdl-grid--no-spacing">
-            <div class="demo-updates mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--12-col-desktop">
-              <div class="mdl-card__title mdl-card--expand" style="background-color: #4CAF50">
-                <h2 class="card-title" style="margin: auto;">Real news</h2>
-              </div>
-            </div>
           </div>
-
-      </div>         
         </div>
       </main>
+     
     </div>
+
       
     <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+    <script src="/static/js/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+    
+
+    <script type="text/javascript">
+    
+    $("#Submit").click(function(){
+        var messageTxt = $('#body').val();
+        if(messageTxt.length <= 10){
+          $('#addcard').find('div:nth-child(1)').remove();
+          $('#addcard').append('<div class=" mdl-card mdl-shadow--4dp" style="background:#fa4b2a;"><div class="mdl-card__title"> <!-- title --><h4>Please give me more text to analyze!</h4></div></div>');
+        }
+        if (messageTxt.length > 10){
+          $('#addcard').find('div:nth-child(1)').remove();
+          $.post('/classify',{message: messageTxt},function(result){
+            if(result.category == 'Fake'){
+              console.log('news is fake');
+              $('#addcard').append('<div class=" mdl-card mdl-shadow--4dp" style="background:#F44336;"><div class="mdl-card__title"> <!-- title --><h4>Looks like it is fake!</h4></div></div>');
+            }
+            else if(result.category == 'Real'){
+              console.log('news is real');
+              $('#addcard').append('<div class=" mdl-card mdl-shadow--4dp" style="background:#4CAF50;"><div class="mdl-card__title"> <!-- title --><h4>Seems like a real news.</h4></div></div>');
+            }
+        });
+      }
+    });
+
+
+    $('#clear').click(function(){
+      $('#addcard').find('div:nth-child(1)').remove();
+      // $('#textarea1').val("").trigger('autoresize');
+    });
+    </script>
+
+    
+
   </body>
 </html>

@@ -1,15 +1,18 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify, request
 from pymongo import MongoClient
 from apscheduler.scheduler import Scheduler
-import json
-import requests
+import json, requests
+import modelPredict as mp
+
+import pickle 
+from bson.binary import Binary
 
 app = Flask(__name__)
 
 mongo = MongoClient("mongodb+srv://admin:admin@facterrcluster-v12sw.mongodb.net/test?retryWrites=true&w=majority")
 db = mongo['news']
-collection = db['newsData']
+collection = db['test']
 
 schedule = Scheduler() # Scheduler object
 schedule.start()
@@ -32,12 +35,18 @@ def fetch_real_news():
 	data_dict['description'] = article_dict['description']
 	data_dict['url'] = article_dict['url']
 	data_dict['publishedAt'] = article_dict['publishedAt']
-	# print (data_dict)
-	collection.update_one(data_dict, {'$set': data_dict }, upsert=True);
-	# collection.update(query, data_dict, upsert=True);
-	# collection.insert_one(data_dict) 
 
-schedule.add_interval_job(fetch_real_news, minutes=30)
+	title = data_dict['title']
+	body = data_dict['description']
+	result = mp.classify(title, body)
+
+	value = result[1].item()
+
+	data_dict['label'] = result[0]
+	data_dict['score'] = value
+	collection.update_one(data_dict, {'$set': data_dict }, upsert=True);
+	
+schedule.add_interval_job(fetch_real_news, minutes=1)
 
 @app.route("/")
 @app.route("/dashboard")
@@ -54,9 +63,15 @@ def news():
 def search():
 	return render_template("search.html", message="Custom Search");   
 
+@app.route('/classify', methods=['POST'])
+def classify():
+	# get the input text email
+	news_text = request.form['message']
+	return jsonify(mp.classify_single(news_text))
+
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('404.html', title='Page not found'), 404
+	return render_template('404.html', title='Page not found'), 404
 
 
 if __name__ == "__main__":
