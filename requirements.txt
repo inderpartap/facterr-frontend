@@ -1,14 +1,11 @@
 absl-py==0.8.1
 APScheduler==2.1.2
 astor==0.8.0
-cachetools==3.1.1
 certifi==2019.9.11
 chardet==3.0.4
 Click==7.0
 dnspython==1.16.0
 Flask==1.1.1
-Flask-Cache==0.13.1
-Flask-Ext==0.1
 Flask-PyMongo==2.3.0
 gast==0.2.2
 google-auth==1.7.1
