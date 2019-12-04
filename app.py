@@ -4,6 +4,7 @@ from pymongo import MongoClient
 from apscheduler.scheduler import Scheduler
 import json, requests
 import modelPredict as mp
+import util
 
 import pickle 
 from bson.binary import Binary
@@ -52,7 +53,7 @@ schedule.add_interval_job(fetch_real_news, minutes=1)
 @app.route("/dashboard")
 def index():
 	# online_users = mongo.db.users.find({"online": True})
-	return render_template("index.html", message="Dashboard");   
+	return render_template("index.html", message="Dashboard", timeseries = util.read());   
 
 @app.route("/news")
 def news():
