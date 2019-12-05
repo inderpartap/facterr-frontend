@@ -48,12 +48,12 @@ def fetch_real_news():
 	collection.update_one(data_dict, {'$set': data_dict }, upsert=True);
 	
 schedule.add_interval_job(fetch_real_news, minutes=1)
-
+print (util.read_json())
 @app.route("/")
 @app.route("/dashboard")
 def index():
 	# online_users = mongo.db.users.find({"online": True})
-	return render_template("index.html", message="Dashboard", timeseries = util.read());   
+	return render_template("index.html", message="Dashboard", timeseries = util.read(), wordCloud_data = json.dumps(util.read_json()));   
 
 @app.route("/news")
 def news():
