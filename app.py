@@ -13,7 +13,7 @@ app = Flask(__name__)
 
 mongo = MongoClient("mongodb+srv://admin:admin@facterrcluster-v12sw.mongodb.net/test?retryWrites=true&w=majority")
 db = mongo['news']
-collection = db['test']
+collection = db['newsData']
 
 schedule = Scheduler() # Scheduler object
 schedule.start()
@@ -47,13 +47,16 @@ def fetch_real_news():
 	data_dict['score'] = value
 	collection.update_one(data_dict, {'$set': data_dict }, upsert=True);
 	
-schedule.add_interval_job(fetch_real_news, minutes=1)
-print (util.read_json())
+schedule.add_interval_job(fetch_real_news, minutes=30)
+
 @app.route("/")
 @app.route("/dashboard")
 def index():
 	# online_users = mongo.db.users.find({"online": True})
-	return render_template("index.html", message="Dashboard", timeseries = util.read(), wordCloud_data = json.dumps(util.read_json()));   
+	fake_count = collection.find( { "label": "Fake" } ).count()
+	real_count = collection.find( { "label": "Real" } ).count()
+
+	return render_template("index.html", message="Dashboard", timeseries = util.read(), fake_count = fake_count, real_count = real_count);   
 
 @app.route("/news")
 def news():
